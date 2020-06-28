@@ -6,7 +6,7 @@ const fs = require("fs");
 const session = require("./configs/session.json");
 const stocks = require("./configs/stocks.json");
 
-const instrument_id = process.env.INSTRUMENT_ID;
+const instrument_id = process.argv[2];
 const trading_symbol = stocks[instrument_id];
 
 const datetime = moment().format("YYYYMMDD");
