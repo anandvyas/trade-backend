@@ -6,7 +6,7 @@ const fs = require("fs");
 const session = require("./configs/session.json");
 const stocks = require("./configs/stocks.json");
 
-const instrument_id = process.argv[2];
+const instrument_id = parseInt(process.argv[2]);
 const trading_symbol = stocks[instrument_id];
 
 const datetime = moment().format("YYYYMMDD");
@@ -30,7 +30,7 @@ const ticker = new KiteTicker({
   access_token: session.access_token,
 });
 
-const filename = `./data/${trading_symbol}-${datetime}.txt`;
+const filename = `./data/${datetime}/${trading_symbol}.txt`;
 var wstream = fs.createWriteStream(filename);
 
 ticker.connect();
