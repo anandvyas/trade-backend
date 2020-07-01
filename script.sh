@@ -16,6 +16,10 @@ case "$1" in
         node login.js
 
         echo "$(date +"%Y-%m-%d %T") info: Start process..." >> ./logs/all-logs.log
+        echo "$(date +"%Y-%m-%d %T") info: Creating directory $currentDate ..." >> ./logs/all-logs.log
+
+        mkdir -p ./data/$currentDate
+        
         for i in "${stocks[@]}"; do
             arrIN=(${i//|/ })
             pm2 start master.js --name ${arrIN[0]} -- ${arrIN[1]}
